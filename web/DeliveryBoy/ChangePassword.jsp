@@ -18,20 +18,20 @@
 
                 System.out.println(cp);
 
-                String sel = "select * from tbl_shop where shop_id='" + session.getAttribute("sid") + "'";
+                String sel = "select * from tbl_deliveryboy where deliveryboy_id='" + session.getAttribute("did") + "'";
                 ResultSet rsd = con.selectCommand(sel);
                 rsd.next();
-                if (cp.equals(rsd.getString("shop_password"))) {
-                    if (np.equals(rsd.getString("shop_password"))) {
+                if (cp.equals(rsd.getString("deliveryboy_password"))) {
+                    if (np.equals(rsd.getString("deliveryboy_password"))) {
         %>
         <script>
             alert("new password must not be same as current password");
-            window.location = "HomePage.jsp";
+            window.location = "index.jsp";
         </script>
         <%
         } else {
             if (np.equals(rp)) {
-                String upQry = "update tbl_shop set shop_password='" + np + "' where shop_id='" + session.getAttribute("sid") + "'";
+                String upQry = "update tbl_deliveryboy set deliveryboy_password='" + np + "' where deliveryboy_id='" + session.getAttribute("did") + "'";
                 if (con.executeCommand(upQry)) {
         %>
         <script>
@@ -66,7 +66,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="section-heading">
-                            <h2>Product Registration</h2>
+                            <h2>Change Password</h2>
                         </div>
                     </div>
                     <div class="col-md-6">

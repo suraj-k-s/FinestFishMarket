@@ -15,17 +15,14 @@
     <%
         if (request.getParameter("id") != null) {
             String up = "update tbl_cart set cart_status='"+request.getParameter("status")+"' where cart_id='" + request.getParameter("id") + "'";
-
             if (con.executeCommand(up)) {
                 response.sendRedirect("Bookings.jsp");
             }
         }
-
-
     %>
     <body>
         <%@include file="Head.jsp" %>
-        <br><br><br><br><br><br><br>
+        <br><br>
         <h1>Bookings</h1>
         <br><br>
         <table align='center' border="1" width="50%" >
@@ -37,7 +34,8 @@
                 <th>Qty</th>
                 <th>Status</th>
             </tr>
-            <%                int i = 0;
+            <%                
+                int i = 0;
                 String selQry = "select * from tbl_booking b inner join tbl_cart c on c.booking_id=b.booking_id inner join tbl_user u on u.user_id=b.user_id inner join tbl_product p on p.product_id=c.product_id where shop_id='" + session.getAttribute("sid") + "' and booking_status>0";
                 ResultSet rs = con.selectCommand(selQry);
                 while (rs.next()) {
@@ -51,23 +49,21 @@
                 <td><%=rs.getString("booking_date")%></td>
                 <td><%=rs.getString("cart_qty")%></td>
                 <td><%
-                    if (rs.getString("booking_status").equals("1") && rs.getString("cart_status").equals("1")) {
-                        out.println("Payment Not Completed");
-                    } else if (rs.getString("cart_status").equals("1") && rs.getString("booking_status").equals("2")) {
+                     if (rs.getString("cart_status").equals("1")) {
                     %>
-                    Payment Completed <a href="Bookings.jsp?id=<%=rs.getString("cart_id")%>&status=2">Pack Product</a>
+                    Payment Completed <a href="Bookings.jsp?id=<%=rs.getString("cart_id")%>&status=2">Pack</a>
                     <%
-                    } else if (rs.getString("cart_status").equals("2") && rs.getString("booking_status").equals("2")) {
+                    } else if (rs.getString("cart_status").equals("2") ) {
                     %>
-                    Product Packed <a href="Bookings.jsp?id=<%=rs.getString("cart_id")%>&status=3">Ship Product</a>
+                    Packed 
                     <%
-                    } else if (rs.getString("cart_status").equals("3") && rs.getString("booking_status").equals("2")) {
+                    } else if (rs.getString("cart_status").equals("3")) {
                     %>
-                    Product Shipped <a href="Bookings.jsp?id=<%=rs.getString("cart_id")%>&status=4">Deliver Product</a>
+                     Shipped    
                     <%
-                    } else if (rs.getString("cart_status").equals("4") && rs.getString("booking_status").equals("2")) {
+                    } else if (rs.getString("cart_status").equals("4")) {
                     %>
-                    Product Delivered 
+                     Delivered 
                     <%
                         }
 
@@ -78,10 +74,11 @@
 
             %> 
         </table>
+        <br><br><br><br><br><br>
         <%@include file="Foot.jsp" %>
     </body>
 </html>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
         <script src='https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js'></script>
         <script src='https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js'></script>
         <script src='https://cdn.datatables.net/buttons/1.2.2/js/buttons.colVis.min.js'></script>

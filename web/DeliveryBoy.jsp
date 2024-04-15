@@ -5,14 +5,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
     </head>
     <body>
-        <%@include file="Header.jsp" %>
+        <%@include file="Head.jsp" %>
         <div id="tab" align="center">
-            <h2>Shop Registration</h2>
+            <h2>Delivery partner Registration</h2>
             <br/>
-            <form enctype="multipart/form-data" method="post" action="../Assets/ActionPages/ShopUploadAction.jsp">
+            <form enctype="multipart/form-data" method="post" action="Assets/ActionPages/DeliveryBoyUploadAction.jsp">
                 <table>
                     <tr>
                         <th>Name</th>
@@ -102,14 +101,14 @@
                                 function getPlace(did)
                                 {
                                     $.ajax({
-                                        url: "../Assets/AjaxPages/AjaxPlace.jsp?did=" + did,
+                                        url: "Assets/AjaxPages/AjaxPlace.jsp?did=" + did,
                                         success: function(html) {
                                             $("#sel_place").html(html);
 
                                         }
                                     });
-                                }</script>
-
-        <%@include file="Footer.jsp" %>
+                                }
+        </script>
+        <%@include file="Foot.jsp" %>
     </body>
 </html>

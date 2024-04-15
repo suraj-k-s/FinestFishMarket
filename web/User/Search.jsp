@@ -59,46 +59,6 @@
         </div>
         <div class="container-fluid">
             <div class="row">
-<!--                <div class="col-lg-3">
-                    <h5>Filter Product</h5>
-                    <hr>
-                    <h6 class="text-info"> Select Category</h6>
-                    <ul class="list-group">
-                        <%                            
-                            String selC = "SELECT * from tbl_category";
-                            ResultSet rsC = con.selectCommand(selC);
-                            while (rsC.next()) {
-                        %>
-                        <li class="list-group-item">
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input product_check" value="</%=rsC.getString("category_id")%>" id="category"></%=rsC.getString("category_name")%>
-                                </label>
-                            </div>
-                        </li>
-                        <%
-                            }
-                        %>
-                    </ul>
-                    <h6 class="text-info"> Select Subcategory</h6>
-                    <ul class="list-group">
-                        <%                      
-                            String selS = "SELECT * from tbl_subcategory";
-                            ResultSet rsS = con.selectCommand(selS);
-                            while (rsS.next()) {
-                        %>
-                        <li class="list-group-item">
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input product_check" value="</%=rsS.getString("subcategory_id")%>" id="subcategory"></%=rsS.getString("subcategory_name")%>
-                                </label>
-                            </div>
-                        </li>
-                        <%
-                            }
-                        %>
-                    </ul>
-                </div>-->
                 <div class="col-lg-9">
                     <h5 class="text-center" id="textChange">All Products</h5>
                     <hr>
@@ -108,7 +68,7 @@
                     <div class="row" id="result">
 
                         <%
-                            String selProduct = "select * from tbl_product p inner join tbl_subcategory sc on sc.subcategory_id=p.subcategory_id inner join tbl_category c on c.category_id=sc.category_id";
+                            String selProduct = "select * from tbl_product";
                             ResultSet rsP = con.selectCommand(selProduct);
                             while (rsP.next()) {
                         %>
@@ -122,15 +82,10 @@
                                     </div>
                                     <div class="card-body">
                                         <h4 class="card-title text-danger">
-                                            MRP Price : <strike><%=rsP.getString("MRP")%>/-</strike>
                                             Rate : <%=rsP.getString("product_rate")%>/-<br>
-                                            
+
                                         </h4>
-                                            <h5>You saved <%= rsP.getInt("MRP")- rsP.getInt("product_rate") %></h5>
-                                        <p>
-                                            Category  : <%=rsP.getString("category_name")%><br>
-                                            Subcategory  : <%=rsP.getString("subcategory_name")%><br>
-                                        </p>
+
                                         <%
                                             String stockSql = "select sum(stock_qty) as stock from tbl_stock where product_id = '" + rsP.getString("product_id") + "'";
                                             ResultSet rsST = con.selectCommand(stockSql);
@@ -140,7 +95,6 @@
                                                 if (stock > 0) {
                                         %>
                                         <a href="javascript:void(0)" onclick="addCart('<%=rsP.getString("product_id")%>')" class="btn btn-success btn-block">Add to Cart</a>
-                                        <a href="javascript:void(0)" onclick="buyNow('<%=rsP.getString("product_id")%>', '<%=rsP.getString("product_rate")%>')" class="btn btn-success btn-block">Buy Now</a>
                                         <%
                                         } else if (stock == 0) {
                                         %>
@@ -203,37 +157,7 @@
                     }
                 });
             }
-            $(document).ready(function() {
-
-                $(".product_check").click(function() {
-                    $("#loder").show();
-
-                    var action = 'data';
-                    var category = get_filter_text('category');
-                    var subcategory = get_filter_text('subcategory');
-
-                    $.ajax({
-                        url: "../Assets/AjaxPages/AjaxSearch.jsp?action=" + action + "&category=" + category + "&subcategory=" + subcategory,
-                        success: function(response) {
-                            $("#result").html(response);
-                            $("#loder").hide();
-                            $("#textChange").text("Filtered Products");
-                        }
-                    });
-
-
-                });
-
-                function get_filter_text(text_id)
-                {
-                    var filterData = [];
-
-                    $('#' + text_id + ':checked').each(function() {
-                        filterData.push($(this).val());
-                    });
-                    return filterData;
-                }
-            });
+           
         </script>
     </body>
 </html>

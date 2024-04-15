@@ -9,7 +9,6 @@
     </head>
     <body>
         <%@include file="Head.jsp" %>
-
         <div class="send-message">
             <div class="container">
                 <div class="row">
@@ -31,13 +30,13 @@
                                         <img src="../Assets/Files/<%=rs.getString("shop_photo")%>" width="150" height="120" style="border-radius: 50%">
                                     </div>
                                     <div class="col-lg-12">
-                                      Name :  <%=rs.getString("shop_name")%>
+                                        Name :  <%=rs.getString("shop_name")%>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12">
-                                     Contact :   <%=rs.getString("shop_contact")%>
+                                        Contact :   <%=rs.getString("shop_contact")%>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12">
-                                     Email :   <%=rs.getString("shop_email")%>
+                                        Email :   <%=rs.getString("shop_email")%>
                                     </div>
                                     <div class="col-lg-12">
                                         <fieldset>

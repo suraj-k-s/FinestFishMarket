@@ -64,7 +64,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="section-heading">
-                            <h2>Product Registration</h2>
+                            <h2>Change Password</h2>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -83,7 +83,7 @@
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <fieldset>
-                                            <input  type="password" class="form-control" name="txt_rp" id="txt_rp"  placeholder="New Password" required="">
+                                            <input  type="password" class="form-control" name="txt_rp" id="txt_rp"  placeholder="Re Password" required="">
                                         </fieldset>
                                     </div>
                                     <div class="col-lg-12">

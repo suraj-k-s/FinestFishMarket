@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2024 at 06:55 AM
+-- Generation Time: Apr 15, 2024 at 11:21 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -52,7 +52,8 @@ CREATE TABLE `tbl_booking` (
   `booking_date` varchar(100) NOT NULL DEFAULT '',
   `booking_status` int(11) NOT NULL DEFAULT 0,
   `booking_amount` varchar(100) NOT NULL DEFAULT '',
-  `user_id` int(11) NOT NULL
+  `user_id` int(11) NOT NULL,
+  `delivery_boy` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -72,17 +73,6 @@ CREATE TABLE `tbl_cart` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_category`
---
-
-CREATE TABLE `tbl_category` (
-  `category_id` int(11) NOT NULL,
-  `category_name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tbl_complaint`
 --
 
@@ -94,6 +84,26 @@ CREATE TABLE `tbl_complaint` (
   `complaint_status` int(11) NOT NULL DEFAULT 0,
   `user_id` int(11) NOT NULL,
   `complaint_reply_date` varchar(10) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_deliveryboy`
+--
+
+CREATE TABLE `tbl_deliveryboy` (
+  `deliveryboy_id` int(11) NOT NULL,
+  `deliveryboy_name` varchar(100) NOT NULL,
+  `deliveryboy_contact` varchar(100) NOT NULL,
+  `deliveryboy_address` varchar(100) NOT NULL,
+  `deliveryboy_photo` varchar(100) NOT NULL,
+  `deliveryboy_proof` varchar(100) NOT NULL,
+  `deliveryboy_status` int(11) NOT NULL DEFAULT 0,
+  `deliveryboy_doj` date NOT NULL DEFAULT current_timestamp(),
+  `place_id` int(11) NOT NULL,
+  `deliveryboy_email` varchar(100) NOT NULL,
+  `deliveryboy_password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -131,8 +141,7 @@ CREATE TABLE `tbl_product` (
   `product_details` varchar(500) NOT NULL,
   `product_photo` varchar(100) NOT NULL,
   `product_rate` varchar(100) NOT NULL DEFAULT '0',
-  `shop_id` int(11) NOT NULL,
-  `category_id` int(11) NOT NULL
+  `shop_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -225,16 +234,16 @@ ALTER TABLE `tbl_cart`
   ADD PRIMARY KEY (`cart_id`);
 
 --
--- Indexes for table `tbl_category`
---
-ALTER TABLE `tbl_category`
-  ADD PRIMARY KEY (`category_id`);
-
---
 -- Indexes for table `tbl_complaint`
 --
 ALTER TABLE `tbl_complaint`
   ADD PRIMARY KEY (`complaint_id`);
+
+--
+-- Indexes for table `tbl_deliveryboy`
+--
+ALTER TABLE `tbl_deliveryboy`
+  ADD PRIMARY KEY (`deliveryboy_id`);
 
 --
 -- Indexes for table `tbl_district`
@@ -301,16 +310,16 @@ ALTER TABLE `tbl_cart`
   MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tbl_category`
---
-ALTER TABLE `tbl_category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `tbl_complaint`
 --
 ALTER TABLE `tbl_complaint`
   MODIFY `complaint_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_deliveryboy`
+--
+ALTER TABLE `tbl_deliveryboy`
+  MODIFY `deliveryboy_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_district`

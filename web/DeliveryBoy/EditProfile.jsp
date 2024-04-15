@@ -23,11 +23,11 @@
                             <%
 
                                 if (request.getParameter("btn_submit") != null) {
-                                    String up = "update tbl_shop set shop_name='" + request.getParameter("txt_name") + "',shop_contact='" + request.getParameter("txt_contact") + "', shop_email='" + request.getParameter("txt_email") + "' where shop_id='" + session.getAttribute("sid") + "'";
+                                    String up = "update tbl_deliveryboy set deliveryboy_name='" + request.getParameter("txt_name") + "',deliveryboy_contact='" + request.getParameter("txt_contact") + "', deliveryboy_email='" + request.getParameter("txt_email") + "' where deliveryboy_id='" + session.getAttribute("did") + "'";
                                     con.executeCommand(up);
                                 }
 
-                                String sel = "select * from tbl_shop where shop_id='" + session.getAttribute("sid") + "'";
+                                String sel = "select * from tbl_deliveryboy where deliveryboy_id='" + session.getAttribute("did") + "'";
                                 ResultSet rs = con.selectCommand(sel);
                                 if (rs.next()) {
                             %>
@@ -35,17 +35,17 @@
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <fieldset>
-                                            <input  type="text" class="form-control" name="txt_name" id="txt_name" value="<%=rs.getString("shop_name")%>" required="">
+                                            <input  type="text" class="form-control" name="txt_name" id="txt_name" value="<%=rs.getString("deliveryboy_name")%>" required="">
                                         </fieldset>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <fieldset>
-                                            <input  type="text" class="form-control" name="txt_contact" id="txt_contact" value="<%=rs.getString("shop_contact")%>" required="">
+                                            <input  type="text" class="form-control" name="txt_contact" id="txt_contact" value="<%=rs.getString("deliveryboy_contact")%>" required="">
                                         </fieldset>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <fieldset>
-                                            <input  type="email" class="form-control" name="txt_email" id="txt_email" value="<%=rs.getString("shop_email")%>" required="">
+                                            <input  type="email" class="form-control" name="txt_email" id="txt_email" value="<%=rs.getString("deliveryboy_email")%>" required="">
                                         </fieldset>
                                     </div>
                                     <div class="col-lg-12">

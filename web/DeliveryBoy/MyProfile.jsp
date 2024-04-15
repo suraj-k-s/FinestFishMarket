@@ -21,23 +21,23 @@
                     <div class="col-md-6">
                         <div class="contact-form">
                             <%
-                                String sel = "select * from tbl_shop where shop_id='" + session.getAttribute("sid") + "'";
+                                String sel = "select * from tbl_deliveryboy where deliveryboy_id='" + session.getAttribute("did") + "'";
                                 ResultSet rs = con.selectCommand(sel);
                                 if (rs.next()) {
                             %>
                             <form  method="post" >
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12">
-                                        <img src="../Assets/Files/<%=rs.getString("shop_photo")%>" width="150" height="120" style="border-radius: 50%">
+                                        <img src="../Assets/Files/<%=rs.getString("deliveryboy_photo")%>" width="150" height="120" style="border-radius: 50%">
                                     </div>
                                     <div class="col-lg-12">
-                                      Name :  <%=rs.getString("shop_name")%>
+                                      Name :  <%=rs.getString("deliveryboy_name")%>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12">
-                                     Contact :   <%=rs.getString("shop_contact")%>
+                                     Contact :   <%=rs.getString("deliveryboy_contact")%>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12">
-                                     Email :   <%=rs.getString("shop_email")%>
+                                     Email :   <%=rs.getString("deliveryboy_email")%>
                                     </div>
                                     <div class="col-lg-12">
                                         <fieldset>

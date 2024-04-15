@@ -14,6 +14,9 @@
 
         String selQryS = "select * from tbl_shop where shop_email='" + email + "' and shop_password='" + password + "'";
         ResultSet rsS = con.selectCommand(selQryS);
+        
+        String selQryD = "select * from tbl_deliveryboy where deliveryboy_email='" + email + "' and deliveryboy_password='" + password + "'";
+        ResultSet rsD = con.selectCommand(selQryD);
 
         if (rsA.next()) {
             session.setAttribute("aname", rsA.getString("admin_name"));
@@ -24,10 +27,14 @@
             session.setAttribute("uid", rsU.getString("user_id"));
             response.sendRedirect("User/");
         } else if (rsS.next()) {
-
             session.setAttribute("sname", rsS.getString("shop_name"));
             session.setAttribute("sid", rsS.getString("shop_id"));
             response.sendRedirect("Shop/");
+
+        }else if (rsD.next()) {
+            session.setAttribute("dname", rsD.getString("deliveryboy_name"));
+            session.setAttribute("did", rsD.getString("deliveryboy_id"));
+            response.sendRedirect("DeliveryBoy/");
 
         } else {
                 %>

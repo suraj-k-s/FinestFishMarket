@@ -66,7 +66,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="section-heading">
-                            <h2>Product Registration</h2>
+                            <h2>Change Password</h2>
                         </div>
                     </div>
                     <div class="col-md-6">

@@ -107,7 +107,7 @@
                     }
 
                 }
-                if (value[7].equals(value[8])) {//Strinh str1="insert into tbl_shop ()";//inserting file
+                if (value[7].equals(value[6])) {//Strinh str1="insert into tbl_shop ()";//inserting file
                     String InsQry = "INSERT INTO `tbl_shop`( `shop_name`, `shop_contact`, `shop_email`,`shop_address`,place_id, `shop_photo`,`shop_proof`,`shop_password`)"
                             + "values('" + value[0] + "','" + value[1] + "','" + value[2] + "','" + value[3] + "','" + value[5] + "','" + photo + "','" + proof + "','" + value[6] + "')";
 
@@ -120,7 +120,7 @@
         <script type="text/javascript">
             alert("Registration Completed");
             setTimeout(function() {
-                //window.location.href = '../../Login.jsp'
+                window.location.href = '../../Admin/Shop.jsp'
             }, 40);//40millisecend it go to next page
         </script>
         <%
@@ -130,7 +130,7 @@
         <script type="text/javascript">
             alert("Password Mismatched..");
             setTimeout(function() {
-               // window.location.href = '../../Shop.jsp'
+                window.location.href = '../../Admin/Shop.jsp'
             }, 40);//40millisecend it go to next page
             //   </script>
             <%

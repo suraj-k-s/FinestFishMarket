@@ -15,7 +15,7 @@
                 //background-color: #EFF1F7;
             }
         </style>
-        
+
     </head>
     <%        if (request.getParameter("aid") != null) {
 
@@ -53,7 +53,7 @@
             </thead>
             <tbody>
                 <%                    int i = 0;
-                    String selQry = "select * from tbl_shop c inner join tbl_place p on p.place_id=c.place_id inner join tbl_district d on d.district_id=p.district_id where shop_status='0'";
+                    String selQry = "select * from tbl_shop c inner join tbl_place p on p.place_id=c.place_id inner join tbl_district d on d.district_id=p.district_id";
                     ResultSet rs = con.selectCommand(selQry);
 
                     while (rs.next()) {
@@ -67,12 +67,27 @@
                     <td><%=rs.getString("shop_contact")%></td>
                     <td><%=rs.getString("shop_email")%></td>
                     <td align="center">
+                        <%
+                            if (rs.getString("shop_status").equals("0")) {
+                        %>
                         <a href="NewShop.jsp?aid=<%=rs.getString("shop_id")%>"><img src="../Assets/Template/admin/check.png" width="25" height="25"></a>&nbsp;&nbsp;&nbsp;&nbsp;
                         <a href="NewShop.jsp?rid=<%=rs.getString("shop_id")%>"><img src="../Assets/Template/admin/remove.png"  width="25" height="25"></a>
+                            <%
+                            } else if (rs.getString("shop_status").equals("1")) {
+                            %>
+                        <a href="NewShop.jsp?rid=<%=rs.getString("shop_id")%>"><img src="../Assets/Template/admin/remove.png"  width="25" height="25"></a>
+                            <%
+                            } else if (rs.getString("shop_status").equals("2")) {
+                            %>
+                        <a href="NewShop.jsp?aid=<%=rs.getString("shop_id")%>"><img src="../Assets/Template/admin/check.png" width="25" height="25"></a>
+                            <%
+                                }
+
+
+                            %>
                     </td>
                 </tr>
-                <%
-                    }
+                <%                    }
 
                 %>
             </tbody>

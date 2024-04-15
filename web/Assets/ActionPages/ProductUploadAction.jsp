@@ -87,8 +87,8 @@
 
         }
 
-        String InsQry = "INSERT INTO `tbl_product`(product_name,product_details,category_id,product_photo,product_rate,shop_id)"
-                + "values('" + value[0] + "','" + value[1] + "','" + value[2] + "','" + photo + "','" + value[3] + "','"+session.getAttribute("sid")+"')";
+        String InsQry = "INSERT INTO `tbl_product`(product_name,product_details,product_photo,product_rate,shop_id)"
+                + "values('" + value[0] + "','" + value[1] + "','" + photo + "','" + value[2] + "','"+session.getAttribute("sid")+"')";
 
             //System.out.println(InsQry);
         //out.println(InsQry);

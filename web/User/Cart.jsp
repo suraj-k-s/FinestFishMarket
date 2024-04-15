@@ -332,14 +332,7 @@
         <h1>Cart</h1>
         <form method="post">
             <div class="shopping-cart" style="margin-top: 50px">
-                <div class="column-labels">
-                    <!--<label class="product-image" >Image</label>-->
-                    <label class="product-details">Product</label>
-                    <label class="product-price">Price</label>
-                    <label class="product-quantity">Quantity</label>
-                    <label class="product-removal">Remove</label>
-                    <label class="product-line-price">Total</label>
-                </div>
+               
                 <%                String sel = "select * from tbl_booking b inner join tbl_cart c on c.booking_id=b.booking_id where b.user_id='" + session.getAttribute("uid") + "' and booking_status='0'";
                     ResultSet rs = con.selectCommand(sel);
                     while (rs.next()) {
