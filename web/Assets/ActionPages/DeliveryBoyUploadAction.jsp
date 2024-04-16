@@ -120,7 +120,7 @@
 <script type="text/javascript">
     alert("Registration Completed");
     setTimeout(function() {
-        window.location.href = '../../Guest/DeliveryBoy.jsp'
+        window.location.href = '../../DeliveryBoy.jsp'
     }, 40);//40millisecend it go to next page
 </script>
 <%
@@ -130,7 +130,7 @@
 <script type="text/javascript">
     alert("Password Mismatched..");
     setTimeout(function() {
-        window.location.href = '../../Guest/DeliveryBoy.jsp'
+        window.location.href = '../../DeliveryBoy.jsp'
     }, 40);//40millisecend it go to next page
     //   </script>
     <%
